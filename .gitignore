@@ -1,0 +1,4 @@
+# 忽略 
+COCO/
+yolov5/
+coco_subset/
