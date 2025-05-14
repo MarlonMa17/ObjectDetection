@@ -1,0 +1,24 @@
+# Core
+torch>=1.10
+torchvision>=0.11
+numpy
+matplotlib
+opencv-python
+tqdm
+
+# Jupyter Support
+jupyter
+ipykernel
+ipywidgets
+widgetsnbextension
+jupyterlab_widgets
+
+# COCO Tools
+pycocotools
+
+# YOLOv5-specific (clone yolov5 repo and install its requirements)
+pandas
+scipy
+seaborn
+PyYAML
+requests
