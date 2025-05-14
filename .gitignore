@@ -3,3 +3,4 @@ COCO/
 yolov5/
 coco_subset/
 coco_subset_faster/
+checkpoints/
