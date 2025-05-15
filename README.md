@@ -1,122 +1,99 @@
-# Smart City Object Detection Project
 
-This project compares three state-of-the-art object detection models — YOLOv5, Faster R-CNN, and EfficientDet — using a subset of the COCO dataset. The goal is to evaluate their effectiveness for smart city applications such as traffic analysis and pedestrian monitoring.
+# Smart City AI Object Detection
 
----
+This project implements and compares three object detection models on traffic-related categories extracted from the COCO dataset. The goal is to detect common urban elements such as cars, pedestrians, traffic lights, and buses in real-world videos as part of a smart city application.
 
-## Project Structure
+##  Project Structure
 
 ```
 ObjectDetection/
-├── COCO/                        # Original dataset (train2017, val2017, annotations)
-├── coco_subset/                # Processed subset used for training/testing
-├── yolov5_smart_city.ipynb     # YOLOv5 notebook
-├── faster_rcnn_smart_city.ipynb# Faster R-CNN notebook
-├── efficientdet_smart_city.ipynb# EfficientDet notebook
-├── videos/                     # Input video files for inference
-└── README.md                   # This file
+│
+├── COCO/                          # Original COCO dataset (full)
+├── coco_subset/                   # Subset with traffic-related images
+├── coco_yolo_dataset/            # YOLOv5-formatted image/label set
+│
+├── yolov5/                        # YOLOv5 repository (cloned)
+├── yolov5_smart_city.ipynb       # Training and inference with YOLOv5
+├── faster_rcnn_smart_city.ipynb  # Training and inference with Faster R-CNN
+├── ssd_smart_city.ipynb          # Training and inference with SSD
+│
+├── videos/                        # Raw test video files
+├── runs/                          # YOLOv5 training and detection output
+├── fasterOutput/                 # Faster R-CNN output videos
+├── ssdOutput/                    # SSD output videos
 ```
 
----
+##  Installation
 
-## 1. YOLOv5 Model
-
-### 🔧 Environment Setup
-
+1. Clone YOLOv5 repo:
 ```bash
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
 pip install -r requirements.txt
 ```
 
-### Dataset Preparation
-
-* Downloaded a subset of the COCO `train2017` and `val2017` datasets.
-* Converted annotations from COCO JSON to YOLO format using a custom script.
-* Generated a `smartcity.yaml` for training configuration.
-
-### Training Command
-
+2. Install Python dependencies:
 ```bash
-# Inside yolov5 directory
-python train.py \
-  --img 640 \
-  --batch 16 \
-  --epochs 5 \
-  --data data/smartcity.yaml \
-  --weights yolov5s.pt \
-  --project runs/train \
-  --name smartcity_yolo5_test \
-  --exist-ok
+pip install torchvision matplotlib tqdm opencv-python
 ```
 
-### Inference on Validation Images
+##  Dataset Preparation
 
-```bash
-python detect.py \
-  --weights runs/train/smartcity_yolo5_test/weights/best.pt \
-  --img 640 \
-  --conf 0.25 \
-  --source ../coco_subset/images/val \
-  --project runs/detect \
-  --name smartcity_yolo5_test \
-  --exist-ok
-```
+We use a subset of the COCO dataset focused on traffic-related categories:
 
-### Inference on Video Files
+- person (1)
+- bicycle (2)
+- car (3)
+- motorcycle (4)
+- bus (6)
+- truck (8)
+- traffic light (10)
+- stop sign (13)
 
-```python
-# See yolov5_video_inference.py for full code
-# Automatically loads .mp4 files from the `videos/` directory and saves annotated results
-```
+Download from the official COCO site:
+- `train2017.zip`
+- `val2017.zip`
+- `annotations_trainval2017.zip`
 
-### Evaluation Metrics
+Then, run a script to extract only relevant images and annotations into `coco_subset/`.
 
-* Results: `runs/train/smartcity_yolo5_test/results.png`
-* mAP\@0.5, mAP\@0.5:0.95, Precision, Recall
+##  Model Training Instructions
 
----
+### YOLOv5 (in `yolov5_smart_city.ipynb`)
+- Uses `yolov5s.pt` pre-trained weights
+- Trained for 5 epochs
+- Results saved to: `runs/train/smartcity_yolo5_test/`
 
-## 2. Faster R-CNN Model
+### Faster R-CNN (in `faster_rcnn_smart_city.ipynb`)
+- Based on `fasterrcnn_resnet50_fpn`
+- Trained for 5 epochs
+- Output saved to: `fasterOutput/annotated_*.mp4`
 
-> (To be completed after you finish the second model)
+### SSD (in `ssd_smart_city.ipynb`)
+- Based on `ssd300_vgg16`
+- Trained for 30 epochs
+- Model struggled to generalize, outputs saved to: `ssdOutput/annotated_*.mp4`
 
-* Framework: PyTorch + torchvision
-* Model: Pre-trained Faster R-CNN with ResNet50
-* COCO format loader using torchvision.datasets.CocoDetection
-* Evaluation scripts using pycocotools
+##  Video Inference
 
----
+Each model was used to annotate test video clips. Results are saved as:
 
-## 3. EfficientDet Model
+- `runs/detect/smartcity_yolo5_test/`
+- `fasterOutput/annotated_video.mp4`
+- `ssdOutput/annotated_video.mp4`
 
-> (To be completed)
+Bounding boxes and class labels were drawn for all predictions with confidence ≥ 0.25.
 
-* Framework: TensorFlow or PyTorch
-* Model: EfficientDet-D0 or D1 via `efficientdet-pytorch`
-* Augmentation and anchor-free training
-* Custom dataloader for COCO subset
+##  Results Overview
 
----
+| Model        | Accuracy | Speed | Notes |
+|--------------|----------|--------|-------|
+| YOLOv5       |  High   |  Fast | Best overall performance |
+| Faster R-CNN |  High   |  Slower | Accurate but slower |
+| SSD          |  Poor  |  Fast | Weak classification (all objects predicted as "car") |
 
-## Comparison Summary
+##  References
 
-| Metric         | YOLOv5       | Faster R-CNN    | EfficientDet |
-| -------------- | ------------ | --------------- | ------------ |
-| Speed (FPS)    | Fast       | Medium         | Fast        |
-| Accuracy (mAP) | High        | Very High     | Medium      |
-| Ease of Use    | Easy       | Medium        | Medium     |
-| Inference Type | Real-time  | Frame-based  | Real-time  |
-
----
-
-##  Contributors
-
-* Your Name
-* Group Members
-
----
-
-##  License
-
-MIT License
+- [COCO Dataset](https://cocodataset.org)
+- [YOLOv5](https://github.com/ultralytics/yolov5)
+- [Torchvision Detection Models](https://pytorch.org/vision/stable/models.html)
