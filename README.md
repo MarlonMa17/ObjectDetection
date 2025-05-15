@@ -81,43 +81,6 @@ ObjectDetection/
   Directory containing test videos used during model inference and demonstration.
 
 
-2. Github version:
-```
-ObjectDetection/
-├── videos/ # Raw video clips used for inference testing
-│
-├── prepare_coco_subset.py # Script to extract traffic-related COCO subset
-│
-├── yolov5_smart_city.ipynb # YOLOv5 training and video inference notebook
-├── faster_rcnn_smart_city.ipynb # Faster R-CNN training and video inference notebook
-├── ssd_smart_city.ipynb # SSD model notebook, used as a contrast case
-│
-├── README.md # Project overview and setup instructions
-├── requirements.txt # Python dependency list
-├── .gitignore # Git ignore settings
-```
-
-###  Notebook Summaries:
-
-- **yolov5_smart_city.ipynb**  
-  Contains the full training, evaluation, and video inference pipeline using Ultralytics YOLOv5. Trained on a traffic-focused COCO subset.
-
-- **faster_rcnn_smart_city.ipynb**  
-  Uses torchvision's Faster R-CNN model. Trains on the same COCO subset and performs bounding box predictions on video.
-
-- **ssd_smart_city.ipynb**  
-  Demonstrates SSD300 model training and inference. Included for comparative purposes — the model underperforms in this case.
-
-- **prepare_coco_subset.py**  
-  Python script that filters COCO's train/val sets to retain only traffic-related classes and images.
-
-- **requirements.txt**  
-  All Python dependencies (PyTorch, OpenCV, etc.) needed to run the notebooks.
-
-- **videos/**  
-  Directory containing test videos used during model inference and demonstration.
-
-
 ##  Installation
 
 1. Clone YOLOv5 repo:
