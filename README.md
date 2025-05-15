@@ -1,10 +1,32 @@
 
+## Task distribution among group members
+●	Jinwoo Bae  
+Identified the fundamental issue for intelligent traffic control and explained the real-world application setting. chosen and examined the UA-DETRAC dataset, paying particular attention to its environmental conditions, labeled classifications, and structure. assessed the dataset's suitability for object detection model training and testing by looking at important features such vehicle types, occlusion levels, truncation, lighting conditions, and object scales. summarized the results of the dataset interpretation and provided assistance for the evaluation discussion in the project report.
+
+●	Honghao Ma  
+End-to-End Project Implementation & Engineering
+Led the entire pipeline development and experimental workflow for the Smart City AI Object Detection project. This includes:  
+●	Dataset Engineering: Designed and implemented a custom subset extraction process from the COCO dataset, selecting only traffic-relevant categories. Converted annotations into both COCO-style JSON and YOLO-format `.txt` files to support multiple model architectures.  
+●	Model Implementation: Trained and evaluated three different object detection models—YOLOv5, Faster R-CNN, and SSD300—across a unified COCO-based dataset. Adapted and fine-tuned model heads to fit a custom 8-class setting, and performed hyperparameter tuning within computational constraints.  
+●	Inference & Visualization Pipeline: Developed video inference pipelines for all models, including frame preprocessing, detection, post-processing (NMS), and OpenCV-based visual overlay. Saved output videos with bounding boxes for visual comparison and statistical analysis.  
+●	Evaluation & Comparison: Collected performance results across models, analyzed class-wise detection behavior, and compared outcomes in terms of speed, accuracy, and robustness. Positioned SSD as a negative baseline for contrastive analysis.  
+●	Project Infrastructure: Built and maintained the entire GitHub repository, organizing code, notebooks, and configuration files. Authored the complete project report and README, and designed the final presentation content to highlight key takeaways from the experimental comparisons.  
+Final version: https://github.com/MarlonMa17/ObjectDetection/tree/main  
+Old version: https://github.com/MarlonMa17/258Project
+
+●	Itzel Xu  
+Literature & Model Research:Conducted an in-depth review of key object detection papers. Researched model architecture details and compared various YOLO versions and their practical implications in constrained edge deployment scenarios.
+Dataset Evaluation: Validated the UA-DETRAC dataset, ensuring proper label mapping and quality checks for robust traffic detection.
+Deployment & Debugging: Resolved configuration issues in both training and inference pipelines (e.g., module imports, device configuration, input tensor shape conversion, normalization, and augmentation) within the Kaggle environment.
+Collaborated with team members contributing to clear project documentation and presentation material.
+
 # Smart City AI Object Detection
 
 This project implements and compares three object detection models on traffic-related categories extracted from the COCO dataset. The goal is to detect common urban elements such as cars, pedestrians, traffic lights, and buses in real-world videos as part of a smart city application.
 
 ##  Project Structure
 
+1. All code version:
 ```
 ObjectDetection/
 │
@@ -22,6 +44,42 @@ ObjectDetection/
 ├── fasterOutput/                 # Faster R-CNN output videos
 ├── ssdOutput/                    # SSD output videos
 ```
+2. Github version:
+```
+ObjectDetection/
+├── videos/ # Raw video clips used for inference testing
+│
+├── prepare_coco_subset.py # Script to extract traffic-related COCO subset
+│
+├── yolov5_smart_city.ipynb # YOLOv5 training and video inference notebook
+├── faster_rcnn_smart_city.ipynb # Faster R-CNN training and video inference notebook
+├── ssd_smart_city.ipynb # SSD model notebook, used as a contrast case
+│
+├── README.md # Project overview and setup instructions
+├── requirements.txt # Python dependency list
+├── .gitignore # Git ignore settings
+```
+
+###  Notebook Summaries:
+
+- **yolov5_smart_city.ipynb**  
+  Contains the full training, evaluation, and video inference pipeline using Ultralytics YOLOv5. Trained on a traffic-focused COCO subset.
+
+- **faster_rcnn_smart_city.ipynb**  
+  Uses torchvision's Faster R-CNN model. Trains on the same COCO subset and performs bounding box predictions on video.
+
+- **ssd_smart_city.ipynb**  
+  Demonstrates SSD300 model training and inference. Included for comparative purposes — the model underperforms in this case.
+
+- **prepare_coco_subset.py**  
+  Python script that filters COCO's train/val sets to retain only traffic-related classes and images.
+
+- **requirements.txt**  
+  All Python dependencies (PyTorch, OpenCV, etc.) needed to run the notebooks.
+
+- **videos/**  
+  Directory containing test videos used during model inference and demonstration.
+
 
 ##  Installation
 
