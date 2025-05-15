@@ -4,4 +4,5 @@ yolov5/
 coco_subset/
 coco_yolo_dataset/
 checkpoints/
-
+fasterOutput/
+ssdOutput/
