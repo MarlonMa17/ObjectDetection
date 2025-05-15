@@ -2,5 +2,6 @@
 COCO/
 yolov5/
 coco_subset/
-coco_subset_faster/
+coco_yolo_dataset/
 checkpoints/
+
