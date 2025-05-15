@@ -78,7 +78,7 @@ Then, run a script to extract only relevant images and annotations into `coco_su
 
 Each model was used to annotate test video clips. Results are saved as:
 
-- `runs/detect/smartcity_yolo5_test/`
+- `yolov5Output/runs/inference/annotated_video.mp4` (`yolov5/runs/inference/annotated_video.mp4`)
 - `fasterOutput/annotated_video.mp4`
 - `ssdOutput/annotated_video.mp4`
 
