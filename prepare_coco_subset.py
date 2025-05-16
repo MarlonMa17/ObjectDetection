@@ -64,3 +64,12 @@ create_subset(
     save_ann_path=os.path.join(subset_root, "annotations", "instances_val2017.json"),
     max_images=1000
 )
+
+from collections import Counter
+ann_path = "C:/Users/admin/Downloads/Code/ObjectDetection/coco_subset/annotations/instances_train2017.json"
+
+with open(ann_path, 'r') as f:
+    data = json.load(f)
+
+counter = Counter(ann['category_id'] for ann in data['annotations'])
+print("Category usage in subset:", counter)
