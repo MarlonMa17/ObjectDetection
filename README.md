@@ -156,6 +156,25 @@ Bounding boxes and class labels were drawn for all predictions with confidence �
 
 ##  References
 
-- [COCO Dataset](https://cocodataset.org)
-- [YOLOv5](https://github.com/ultralytics/yolov5)
-- [Torchvision Detection Models](https://pytorch.org/vision/stable/models.html)
+[1]L. Wen et al., “UA-DETRAC: A new benchmark and protocol for multi-object detection and 
+tracking,” Computer Vision and Image Understanding, vol. 193, p. 102907, Apr. 2020, doi: 
+https://doi.org/10.1016/j.cviu.2020.102907.  
+[2]https://www.kaggle.com/datasets/dtrnngc/ua-detrac-dataset/code  
+[3] Khanam, R., & Hussain, M. (2024). What is YOLOv5: A deep look into the internal features 
+of the popular object detector [Preprint]. arXiv. https://arxiv.org/abs/2407.2089  
+[4]Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You only look once: Unified, 
+real‑time object detection. In Proceedings of the IEEE Conference on Computer Vision and  
+Pattern Recognition (pp. 779–788). https://doi.org/10.1109/CVPR.2016.91  
+[5]torchvision.ops.nms. (n.d.). In PyTorch Documentation. Retrieved May 11, 2025, from 
+https://pytorch.org/vision/stable/ops.html#torchvision.ops.nms  
+[6] https://cocodataset.org/#download  
+[7] Girshick, Ross. “Py-Faster-Rcnn Has Been Deprecated. Please See Detectron, Which Includes an 
+Implementation of Mask R-CNN.” GitHub, 2 May 2023, github.com/rbgirshick/pyfaster-rcnn.  
+[8] Singh, Rishabh. “Understanding and Implementing Faster R-CNN - Rishabh Singh - Medium.” 
+Medium, 14 Oct. 2024, medium.com/@RobuRishabh/understanding-andimplementing-faster-r-cnn-
+248f7b25ff96.  
+[9] Vinodababu, Sagar. “Contents.” GitHub, 4 May 2023, github.com/sgrvinod/a-PyTorchTutorial-to-
+Object-Detection.  
+[10] Hui, Jonathan. “SSD Object Detection: Single Shot MultiBox Detector for Real-Time Processing.” 
+Medium, 28 Dec. 2018, jonathan-hui.medium.com/ssd-object-detection-singleshot-multibox-detector-
+for-real-time-processing-9bd8deac0e06.  
