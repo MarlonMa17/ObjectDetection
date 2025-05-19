@@ -38,11 +38,13 @@ ObjectDetection/
 ├── yolov5_smart_city.ipynb       # Training and inference with YOLOv5
 ├── faster_rcnn_smart_city.ipynb  # Training and inference with Faster R-CNN
 ├── ssd_smart_city.ipynb          # Training and inference with SSD
+├── prepare_coco_subset.py        # Script to extract traffic-related COCO subset
 │
 ├── videos/                        # Raw test video files
 ├── runs/                          # YOLOv5 training and detection output
-├── fasterOutput/                 # Faster R-CNN output videos
-├── ssdOutput/                    # SSD output videos
+├── fasterOutput/                 # Faster R-CNN output videos, evaluation result, visulalization output
+├── ssdOutput/                    # SSD output videos, evaluation result, visulalization output
+├── yolov5Output/                  # yolo output videos, evaluation result, visulalization output
 ```
 https://drive.google.com/drive/u/1/folders/1rIXHxzPOJeY1_BnYhV3qV5tHVd3vEiPk  
 
