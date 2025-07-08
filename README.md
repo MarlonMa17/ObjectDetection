@@ -1,7 +1,5 @@
 
 ## Task distribution among group members
-●	Jinwoo Bae  
-Identified the fundamental issue for intelligent traffic control and explained the real-world application setting. chosen and examined the UA-DETRAC dataset, paying particular attention to its environmental conditions, labeled classifications, and structure. assessed the dataset's suitability for object detection model training and testing by looking at important features such vehicle types, occlusion levels, truncation, lighting conditions, and object scales. summarized the results of the dataset interpretation and provided assistance for the evaluation discussion in the project report.
 
 ●	Honghao Ma  
 End-to-End Project Implementation & Engineering
@@ -14,11 +12,6 @@ Led the entire pipeline development and experimental workflow for the Smart City
 Final version: https://github.com/MarlonMa17/ObjectDetection/tree/main  
 Old version: https://github.com/MarlonMa17/258Project
 
-●	Itzel Xu  
-Literature & Model Research:Conducted an in-depth review of key object detection papers. Researched model architecture details and compared various YOLO versions and their practical implications in constrained edge deployment scenarios.
-Dataset Evaluation: Validated the UA-DETRAC dataset, ensuring proper label mapping and quality checks for robust traffic detection.
-Deployment & Debugging: Resolved configuration issues in both training and inference pipelines (e.g., module imports, device configuration, input tensor shape conversion, normalization, and augmentation) within the Kaggle environment.
-Collaborated with team members contributing to clear project documentation and presentation material.
 
 # Smart City AI Object Detection
 
